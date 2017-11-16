@@ -5,3 +5,7 @@ canvas {
 	margin: auto;
 	background: #A4C909;
 }
+@font-face {
+    font-family: 'Homespun';
+    src: url('font/homespun.ttf');
+}
