@@ -19,6 +19,7 @@ for (var i=0; i<=19; i++) {
 for (var i=0; i<=6; i++) {
 	randomY[i] = i*20+60;
 }
+//dfgfg//
 
 
 //DRAW BORDER//
@@ -68,11 +69,6 @@ function Segment(x, y, src, isturn, isfull){
 //KEYBOARD LISTENER//
 
 window.addEventListener("keydown", changeDirection, false);
-window.addEventListener("click", myFunction);
-
-function myFunction() {
-	console.log(Math.floor(Math.random()*2));
-}
 
 function changeDirection(event) {
   var x = event.which || event.keyCode;
@@ -81,7 +77,7 @@ function changeDirection(event) {
     snakes[0].isturn = true;
   }
   if(x===38  && direction != "down" && direction != "up") {
-    direction = "up"; 
+    direction = "up";
     snakes[0].isturn = true;
   }
   if(x===39  && direction != "left" && direction != "right") {
@@ -99,7 +95,7 @@ function changeDirection(event) {
 function initialize(){
 for(i=0; i<8; i++) {
 		x -= 20;
-		snakes.push(new Segment(x, y, src, false)); 
+		snakes.push(new Segment(x, y, src, false));
 	}
 	x = 200;
 }
@@ -128,20 +124,20 @@ function update() {
 	ctx.clearRect(0, 0, 450, 40);
 	ctx.fillText(("000" + score).slice(-4), 40, 40);
 	var newHead = new Segment(x, y, src);
-	snakes.unshift(newHead); 
-	
+	snakes.unshift(newHead);
+
 	//CREATING FEED//
 
 	createFeed();
 	ctx.drawImage(bonus.img, randomBonus, 0, 20, 20, bonus.x, bonus.y, 20, 20);
 
 
-	for(var i=1; i<snakes.length; i++) { 
+	for(var i=1; i<snakes.length; i++) {
 		if(feed.x == snakes[i].x && feed.y == snakes[i].y) {
-			
+
 			createFeed();
-			meal = false;	
-			
+			meal = false;
+
 		}
 		if(bonus.x == snakes[i].x && bonus.y == snakes[i].y) {
 			bonus.x = RandomPositionX();
@@ -175,19 +171,19 @@ function update() {
 	} else {
 		bonus.x = -100;
 	}
-	
 
-	
+
+
 
 	if(!snakes[snakes.length-1].isfull) {
-		snakes.splice(snakes.length-1, 1);	
+		snakes.splice(snakes.length-1, 1);
 	} else {
 		snakes[snakes.length-1].isfull = false;
 	}
 
 
 	for(var i=1; i<snakes.length; i++) {
-		
+
 		if(snakes[i].isturn == true) {
 			ctx.drawImage(snakes[i].img, 0, 0, 20, 20, snakes[i].x, snakes[i].y, 20, 20);
 			ctx.drawImage(snakes[i].img, 40, 0, 20, 20, snakes[i-1].x, snakes[i-1].y, 20, 20);
@@ -196,9 +192,9 @@ function update() {
 			ctx.drawImage(snakes[i-1].img, 80, 0, 20, 20, snakes[i-1].x, snakes[i-1].y, 20, 20);
 		}
 		else {
-			ctx.drawImage(snakes[i].img, 0, 0, 20, 20, snakes[i].x, snakes[i].y, 20, 20); 
+			ctx.drawImage(snakes[i].img, 0, 0, 20, 20, snakes[i].x, snakes[i].y, 20, 20);
 		}
-		
+
 		if(newHead.x == snakes[i].x && newHead.y == snakes[i].y) {
 			snakes = [];
 			score = 0;
@@ -214,13 +210,13 @@ function update() {
 
 	if(direction == "right" || direction == "up"){
 			ctx.drawImage(snakes[0].img, 0, 20, 20, 20, snakes[0].x, snakes[0].y, 20, 20);
-		
+
 	}
 	if(direction == "left" || direction == "down"){
 		ctx.drawImage(snakes[0].img, 0, 40, 20, 20, snakes[0].x, snakes[0].y, 20, 20);
 	}
 
-	
+
 
 
 	if(direction == "right"){
@@ -242,7 +238,7 @@ function update() {
 	    if((snakes[0].x == feed.x && Math.abs(snakes[0].y - feed.y) == 20) || (snakes[0].x == bonus.x && Math.abs(snakes[0].y - bonus.y) == 20)) {
 			ctx.drawImage(snakes[0].img, 20, 40, 20, 20, snakes[0].x, snakes[0].y, 20, 20);
 		}
-	} 
+	}
 	if(direction == "left"){
 	    x -= 20;
 	    if(x < 40) {
@@ -254,7 +250,7 @@ function update() {
 		}
 	}
 	if(direction == "up"){
-	    y -= 20; 
+	    y -= 20;
 	    if(y < 60) {
 	    	y = 240;
 	    }
@@ -264,6 +260,7 @@ function update() {
 		}
 	}
 }
+
 setInterval(update, 100);
 
 
